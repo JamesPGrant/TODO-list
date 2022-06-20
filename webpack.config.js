@@ -54,3 +54,5 @@ module.exports = {
         new BundleAnalyzerPlugin()
     ],
 }
+
+//FOR NEXT TIME CHANGE OUTPUT TO IMAGES FOR IMAGES

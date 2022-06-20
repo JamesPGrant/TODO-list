@@ -2,6 +2,29 @@ $low-Prority: #28a745;
 $med-priority: #ffc107;
 $high-priority: #dc3545;
 
+body{
+    height:100vh;
+    width:100vw;
+}
+.container{
+    display:grid;
+    grid-template: 1fr 1fr 1fr/ 1fr 1fr 1fr;
+
+}
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    grid-row-start:2;
+    grid-row-end:4;
+    grid-column:1;
+}
+
+.heading{
+    grid-row-start:1;
+}
+
 .modal{
     display:none;
     position:fixed;
@@ -35,4 +58,17 @@ $high-priority: #dc3545;
     color: #ef4444;
     text-decoration:none;
     cursor:pointer;
+}
+
+.listOfToDos{
+    display:flex;
+    flex-direction:column;
+    grid-row-start: 2;
+    grid-column-start:2;
+}
+
+.TaskCard{
+    display:flex;
+    flex-direction: row;
+
 }
