@@ -68,6 +68,115 @@ var ToDo = function ToDo(chore, description, date, priority) {
 
 /***/ }),
 
+/***/ "./src/modules/editModal.js":
+/*!**********************************!*\
+  !*** ./src/modules/editModal.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _createElement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createElement */ "./src/createElement.js");
+
+
+function editModal() {
+  var EDITDIV = document.querySelector('.editCon');
+  var createEdit = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'editModal',
+    id: 'editModal'
+  });
+  var editModalContent = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'editCon',
+    id: 'editCon'
+  });
+  var editSpan = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('span', {
+    "class": 'closeEdit'
+  });
+  var editTask = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('p', {
+    "class": 'editDesc'
+  });
+  var myTODOLabel = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('label', {
+    "class": 'TODOLabel',
+    id: 'TODOLab',
+    "for": 'TODO'
+  });
+  var myTODO = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('p', {
+    "class": 'TODOp',
+    id: 'TODOIn',
+    "for": 'TODO',
+    type: 'text'
+  });
+  var TODODescLabel = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('label', {
+    "class": 'TODODescLabel',
+    id: 'TODOdesc',
+    "for": 'TODO'
+  });
+  var TODODescription = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('p', {
+    "class": 'TODODescrip',
+    id: 'TODOdesc',
+    "for": 'TODO'
+  });
+  var dueDateLabel = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('label', {
+    "class": "dateLabel",
+    id: "TODODate",
+    "for": "TODO"
+  });
+  var dueDate = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('p', {
+    "class": 'dateP',
+    id: 'TODODate',
+    "for": 'TODO',
+    type: 'date'
+  });
+  var priLabel = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('label', {
+    "class": 'priLabel',
+    id: 'TODOPri',
+    "for": 'TODO'
+  });
+  var priInput = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('input', {
+    "class": 'priInput',
+    id: 'TODOPri',
+    "for": 'TODO',
+    list: 'pri',
+    name: 'pri'
+  });
+  var priorityList = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('datalist', {
+    "class": 'TODOPri',
+    id: 'pri'
+  });
+  var pri = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('p', {
+    "class": 'priP'
+  });
+  var lowPri = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('option', {
+    value: 'low',
+    "class": 'selectPri'
+  });
+  var medPri = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('option', {
+    value: 'medium',
+    "class": 'selectPri'
+  });
+  var highPri = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('option', {
+    value: 'high',
+    "class": 'selectPri'
+  });
+  EDITDIV.appendChild(createEdit);
+  createEdit.appendChild(editModalContent);
+  editModalContent.appendChild(editSpan);
+  editModalContent.appendChild(editTask);
+  editModalContent.appendChild(myTODO);
+  editModalContent.appendChild(TODODescription);
+  editModalContent.appendChild(dueDateLabel);
+  editModalContent.appendChild(dueDate);
+  editModalContent.appendChild(priorityList);
+  editModalContent.appendChild(pri);
+  editSpan.textContent = "X";
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editModal);
+
+/***/ }),
+
 /***/ "./src/modules/forms.js":
 /*!******************************!*\
   !*** ./src/modules/forms.js ***!
@@ -282,6 +391,37 @@ function modal() {
 
 /***/ }),
 
+/***/ "./src/modules/openEdit.js":
+/*!*********************************!*\
+  !*** ./src/modules/openEdit.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function openEdit() {
+  var editModal = document.querySelector('.editModal');
+  var button = document.querySelector('.edit');
+  var span = document.querySelector('.closeEdit');
+  editModal.style.display = "block";
+
+  span.onclick = function () {
+    editModal.style.display = "none";
+  };
+
+  window.onclick = function (e) {
+    if (e.target == modal) {
+      editModal.style.display = "none";
+    }
+  };
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (openEdit);
+
+/***/ }),
+
 /***/ "./src/modules/popUp.js":
 /*!******************************!*\
   !*** ./src/modules/popUp.js ***!
@@ -389,7 +529,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  height: 100vh;\n  width: 100vw;\n}\n\n.container {\n  display: grid;\n  grid-template: 1fr 1fr 1fr/1fr 1fr 1fr;\n}\n\n.sidebar {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  grid-row-start: 2;\n  grid-row-end: 4;\n  grid-column: 1;\n}\n\n.heading {\n  grid-row-start: 1;\n}\n\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.modalCon {\n  background-color: #fefefe;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.close {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.listOfToDos {\n  display: flex;\n  flex-direction: column;\n  grid-row-start: 2;\n  grid-column-start: 2;\n}\n\n.TaskCard {\n  display: flex;\n  flex-direction: row;\n}", "",{"version":3,"sources":["webpack://./styles/main.scss"],"names":[],"mappings":"AAIA;EACI,aAAA;EACA,YAAA;AAHJ;;AAKA;EACI,aAAA;EACA,sCAAA;AAFJ;;AAMA;EACI,aAAA;EACA,sBAAA;EACA,6BAAA;EACA,iBAAA;EACA,eAAA;EACA,cAAA;AAHJ;;AAMA;EACI,iBAAA;AAHJ;;AAMA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAHJ;;AAMA;EACI,yBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAHJ;;AAMA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAHJ;;AAMA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,aAAA;EACA,sBAAA;EACA,iBAAA;EACA,oBAAA;AAHJ;;AAMA;EACI,aAAA;EACA,mBAAA;AAHJ","sourcesContent":["$low-Prority: #28a745;\n$med-priority: #ffc107;\n$high-priority: #dc3545;\n\nbody{\n    height:100vh;\n    width:100vw;\n}\n.container{\n    display:grid;\n    grid-template: 1fr 1fr 1fr/ 1fr 1fr 1fr;\n\n}\n\n.sidebar{\n    display:flex;\n    flex-direction:column;\n    justify-content:space-around;\n    grid-row-start:2;\n    grid-row-end:4;\n    grid-column:1;\n}\n\n.heading{\n    grid-row-start:1;\n}\n\n.modal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.modalCon{\n    background-color:#fefefe;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.close{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.close:hover,\n.close:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.listOfToDos{\n    display:flex;\n    flex-direction:column;\n    grid-row-start: 2;\n    grid-column-start:2;\n}\n\n.TaskCard{\n    display:flex;\n    flex-direction: row;\n\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  padding: 0;\n  margin: 0;\n}\n\n.container {\n  display: grid;\n  height: 100vh;\n  width: 100vw;\n  grid-template: 1fr 1fr 1fr 5fr/1fr 5fr 1fr;\n}\n\n.sidebar {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  grid-row-start: 2;\n  grid-row-end: 5;\n  grid-column: 1;\n  height: 100%;\n  border-right: 2px solid black;\n}\n\n.sidebar Button {\n  border: none;\n  font-size: 24px;\n  transition: 0.5s;\n}\n\n.sidebar Button:hover {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n  transform: translateY(20%);\n  font-size: 36px;\n}\n\n.headingDiv {\n  grid-area: 1/5/1/1;\n  background-color: #C38D9E;\n  width: 100%;\n}\n\n.heading {\n  color: rgb(243, 242, 242);\n}\n\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.modalCon {\n  background-color: #fefefe;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.close {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.listOfToDos {\n  grid-area: 2/5/2/5;\n  display: flex;\n  flex-direction: column;\n  grid-row-start: 2;\n  grid-column-start: 2;\n}\n\n.taskDiv {\n  display: flex;\n  flex-direction: row;\n}\n\n.editModal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.editCon {\n  background-color: #fefefe;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.closeEdit {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.closeEdit:hover,\n.closeEdit:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.trashCon {\n  display: flex;\n  border: none;\n}\n\n.editCon {\n  border: none;\n}\n\n.taskCard {\n  width: 100px;\n  height: 300px;\n}", "",{"version":3,"sources":["webpack://./styles/main.scss"],"names":[],"mappings":"AAIA;EACI,UAAA;EACA,SAAA;AAHJ;;AAMA;EACI,aAAA;EACA,aAAA;EACA,YAAA;EACA,0CAAA;AAHJ;;AAMA;EACI,aAAA;EACA,sBAAA;EACA,6BAAA;EACA,iBAAA;EACA,eAAA;EACA,cAAA;EACA,YAAA;EACA,6BAAA;AAHJ;;AAMA;EACI,YAAA;EACA,eAAA;EACA,gBAAA;AAHJ;;AAMA;EACI,cAAA;EACA,qBAAA;EACA,eAAA;EACA,0BAAA;EACA,eAAA;AAHJ;;AAMA;EACI,kBAAA;EACA,yBAAA;EACA,WAAA;AAHJ;;AAKA;EACI,yBAAA;AAFJ;;AAKA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAFJ;;AAKA;EACI,yBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAFJ;;AAKA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAFJ;;AAKA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAFJ;;AAKA;EACI,kBAAA;EACA,aAAA;EACA,sBAAA;EACA,iBAAA;EACA,oBAAA;AAFJ;;AAKA;EACI,aAAA;EACA,mBAAA;AAFJ;;AAMA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAHJ;;AAMA;EACI,yBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAHJ;;AAMA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAHJ;;AAMA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,aAAA;EACA,YAAA;AAHJ;;AAMA;EACI,YAAA;AAHJ;;AAMA;EACI,YAAA;EACA,aAAA;AAHJ","sourcesContent":["$low-Prority: #28a745;\n$med-priority: #ffc107;\n$high-priority: #dc3545;\n\nbody{\n    padding:0;\n    margin:0;\n\n}\n.container{\n    display:grid;\n    height:100vh;\n    width:100vw;\n    grid-template: 1fr 1fr 1fr 5fr / 1fr 5fr 1fr;\n}\n\n.sidebar{\n    display:flex;\n    flex-direction:column;\n    justify-content:space-around;\n    grid-row-start:2;\n    grid-row-end:5;\n    grid-column:1;\n    height:100%;\n    border-right:2px solid black;\n}\n\n.sidebar Button{\n    border:none;\n    font-size:24px;\n    transition:.5s\n}\n\n.sidebar Button:hover{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n    transform:translateY(20%);\n    font-size:36px;\n}\n\n.headingDiv{\n    grid-area:1/5/1/1;\n    background-color: #C38D9E;\n    width:100%;\n}\n.heading{\n    color:rgb(243, 242, 242)\n}\n\n.modal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.modalCon{\n    background-color:#fefefe;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.close{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.close:hover,\n.close:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.listOfToDos{\n    grid-area:2/5/2/5;\n    display:flex;\n    flex-direction:column;\n    grid-row-start: 2;\n    grid-column-start:2;\n}\n\n.taskDiv{\n    display:flex;\n    flex-direction: row;\n\n}\n\n.editModal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.editCon{\n    background-color:#fefefe;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.closeEdit{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.closeEdit:hover,\n.closeEdit:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.trashCon{\n    display:flex;\n    border:none;\n}\n\n.editCon{\n    border:none;\n}\n\n.taskCard{\n    width:100px;;\n    height:300px\n}\n\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1040,6 +1180,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_modules_ToDoStorage_ToDo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../src/modules/ToDoStorage/ToDo */ "./src/modules/ToDoStorage/ToDo.js");
 /* harmony import */ var _src_assets_trash_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../src/assets/trash.png */ "./src/assets/trash.png");
 /* harmony import */ var _src_assets_note_edit_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../src/assets/note-edit.png */ "./src/assets/note-edit.png");
+/* harmony import */ var _src_modules_editModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../src/modules/editModal */ "./src/modules/editModal.js");
+/* harmony import */ var _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/openEdit */ "./src/modules/openEdit.js");
 
 
 
@@ -1050,6 +1192,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+ //import deleteEle from '../src/modules/ToDoStorage/deleteTask'
+
+var taskCards = [];
 var tasks = [];
 (0,_modules_heading__WEBPACK_IMPORTED_MODULE_1__["default"])();
 (0,_modules_sidebar__WEBPACK_IMPORTED_MODULE_2__["default"])();
@@ -1140,12 +1286,15 @@ function addToDo() {
 
 events();
 
-function displayToDo(task) {
+function displayToDo(e) {
   //setup modal that pops up when edit img is clicked
   //setup different divs first than set up modal for less confusion
   //TodayDiv, WeekDiv, ProjectsDiv
   //append specific div and then append Home
   //if div.id === today, week, projects append that div
+  var taskDiv = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'taskDiv'
+  });
   var TODAYDIV = document.querySelector('#todayDiv');
   var WEEKDIV = document.querySelector('#weekDiv');
   var PROJECTSDIV = document.querySelector('#projectsDiv');
@@ -1158,8 +1307,12 @@ function displayToDo(task) {
   var TASKDCON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div');
   var TASKDATECON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div');
   var TASKPRIORITYCON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div');
-  var TRASHCON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div');
-  var EDITCON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div');
+  var TRASHCON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'trashCon'
+  });
+  var EDITCON = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'editCon'
+  });
   var TRASHimg = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('img', {
     "class": 'trash',
     id: 'Icon',
@@ -1170,44 +1323,74 @@ function displayToDo(task) {
     id: 'Icon',
     src: "".concat(edit.src)
   });
+  var EDITDiv = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'edit1',
+    id: 'editDiv',
+    src: "".concat(edit.src)
+  });
 
   for (var i = 0; i < tasks.length; i += 1) {
     //div for TASKSCARDDIV
     //NOTES IS GONNA HAVE DIFFERENT FUNCTIONALITY DIFFERENT FROM TODODIVS
     if (listOfToDos.firstChild.id === "todayDiv") {
-      card.appendChild(TASKPCON);
-      card.appendChild(TASKDCON);
-      card.appendChild(TASKDATECON);
-      card.appendChild(TASKPRIORITYCON);
-      card.appendChild(TRASHCON);
-      card.appendChild(EDITCON);
+      card.appendChild(taskDiv);
+      taskCards.push(taskDiv);
+      taskDiv.appendChild(TASKPCON);
+      taskDiv.appendChild(TASKDCON);
+      taskDiv.appendChild(TASKDATECON);
+      taskDiv.appendChild(TASKPRIORITYCON);
+      taskDiv.appendChild(TRASHCON);
+      taskDiv.appendChild(EDITCON);
     } else if (listOfToDos.firstChild.id === "weekDiv") {
-      card1.appendChild(TASKPCON);
-      card1.appendChild(TASKDCON);
-      card1.appendChild(TASKDATECON);
-      card1.appendChild(TASKPRIORITYCON);
-      card1.appendChild(TRASHCON);
-      card1.appendChild(EDITCON);
+      card1.appendChild(taskDiv);
+      taskCards.push(taskDiv);
+      taskDiv.appendChild(TASKPCON);
+      taskDiv.appendChild(TASKDCON);
+      taskDiv.appendChild(TASKDATECON);
+      taskDiv.appendChild(TASKPRIORITYCON);
+      taskDiv.appendChild(TRASHCON);
+      taskDiv.appendChild(EDITCON);
     } else if (listOfToDos.firstChild.id === "projectsDiv") {
-      card2.appendChild(TASKPCON);
-      card2.appendChild(TASKDCON);
-      card2.appendChild(TASKDATECON);
-      card2.appendChild(TASKPRIORITYCON);
-      card2.appendChild(TRASHCON);
-      card2.appendChild(EDITCON);
+      card2.appendChild(taskDiv);
+      taskCards.push(taskDiv);
+      taskDiv.appendChild(TASKPCON);
+      taskDiv.appendChild(TASKDCON);
+      taskDiv.appendChild(TASKDATECON);
+      taskDiv.appendChild(TASKPRIORITYCON);
+      taskDiv.appendChild(TRASHCON);
+      taskDiv.appendChild(EDITCON);
     }
 
+    (0,_src_modules_editModal__WEBPACK_IMPORTED_MODULE_10__["default"])();
+    var priP = document.querySelector('.TODOPri');
+    var dateP = document.querySelector('.dateP');
+    var descP = document.querySelector('.TODODescrip');
+    var TODOp = document.querySelector('.TODOp');
     TASKPCON.appendChild(CLONEDTASKP);
     TASKDCON.appendChild(CLONEDTASKD);
     TASKDATECON.appendChild(CLONEDTASKDATE);
     TASKPRIORITYCON.appendChild(CLONEDTASKPRIORITY);
     TRASHCON.appendChild(TRASHimg);
-    EDITCON.appendChild(EDITimg);
+    TRASHCON.appendChild(EDITimg);
     CLONEDTASKP.textContent = "".concat(tasks[i].chore);
-    CLONEDTASKD.textContent = "".concat(tasks[i].description);
-    CLONEDTASKDATE.textContent = "".concat(tasks[i].date);
+    descP.textContent = "".concat(tasks[i].description);
+    dateP.textContent = "".concat(tasks[i].date);
     CLONEDTASKPRIORITY.textContent = "".concat(tasks[i].priority);
+    taskDiv.setAttribute('id', "".concat(i));
+    TRASHimg.setAttribute('id', "".concat(i));
   }
+
+  TRASHimg.addEventListener('click', deleteEle);
+  EDITimg.addEventListener('click', _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__["default"]);
+}
+
+function deleteEle(e) {
+  var TRASHIMG = document.querySelector('.trash');
+  var removal = e.currentTarget.parentNode.parentNode;
+  console.log(removal);
+  tasks.splice(TRASHIMG.id, 1);
+  removal.remove();
+  console.log(tasks);
 } //today div
 //week div
 //project div
@@ -1218,8 +1401,9 @@ function displayToDo(task) {
 //append radio button to TODO
 //element.required = true
 //document.getElementById('example').required = true
+//setAttribute `${tasks.key}` for edit
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1e15471567c5ff3dba5a.js.map
+//# sourceMappingURL=bundle42502669491be27516e2.js.map

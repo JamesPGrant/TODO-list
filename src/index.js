@@ -8,13 +8,18 @@ import modal from './modules/modal'
 import ToDo from '../src/modules/ToDoStorage/ToDo'
 import trash from '../src/assets/trash.png'
 import notes from '../src/assets/note-edit.png'
-
+import editModal from '../src/modules/editModal'
+import openEdit from './modules/openEdit'
+//import deleteEle from '../src/modules/ToDoStorage/deleteTask'
+let taskCards = []
 let tasks = [];
 heading()
 sidebar()
 modal()
 popUp()
 forms()
+
+
 
 const submitBtn = document.querySelector('.submit')
 const listOfToDos = document.querySelector('.listOfToDos')
@@ -25,6 +30,7 @@ const taskP = createElement('p', {class:'taskP'})
 const taskD = createElement('p', {class:'taskD'})
 const taskDate = createElement('p', {class:'taskDate'})
 const taskPriority = createElement('p', {class:'taskPriority'})
+
 const edit = new Image()
 edit.src = notes
 const del = new Image()
@@ -83,12 +89,13 @@ function addToDo(){
 }
 events()
 
-function displayToDo(task){
+function displayToDo(e){
     //setup modal that pops up when edit img is clicked
     //setup different divs first than set up modal for less confusion
     //TodayDiv, WeekDiv, ProjectsDiv
     //append specific div and then append Home
     //if div.id === today, week, projects append that div
+        const taskDiv = createElement('div', {class:'taskDiv'})
         const TODAYDIV = document.querySelector('#todayDiv')
         const WEEKDIV = document.querySelector('#weekDiv')
         const PROJECTSDIV = document.querySelector('#projectsDiv')
@@ -101,47 +108,84 @@ function displayToDo(task){
         const TASKDCON = createElement('div')
         const TASKDATECON = createElement('div')
         const TASKPRIORITYCON = createElement('div')
-        const TRASHCON = createElement('div')
-        const EDITCON = createElement('div')
+        const TRASHCON = createElement('div', {class:'trashCon'})
+        const EDITCON = createElement('div', {class:'editCon'})
         const TRASHimg = createElement('img', {class:'trash', id:'Icon', src: `${del.src}`})
         const EDITimg  = createElement('img', {class:'edit', id:'Icon', src:`${edit.src}`})
+        const EDITDiv  = createElement('div', {class:'edit1', id:'editDiv', src:`${edit.src}`})
+       
         for(let i = 0; i<tasks.length; i+=1){
             //div for TASKSCARDDIV
             //NOTES IS GONNA HAVE DIFFERENT FUNCTIONALITY DIFFERENT FROM TODODIVS
         if(listOfToDos.firstChild.id === `todayDiv`){
-            card.appendChild(TASKPCON)
-            card.appendChild(TASKDCON)
-            card.appendChild(TASKDATECON)
-            card.appendChild(TASKPRIORITYCON)
-            card.appendChild(TRASHCON)
-            card.appendChild(EDITCON)
+            card.appendChild(taskDiv)
+            taskCards.push(taskDiv)
+            taskDiv.appendChild(TASKPCON)
+            taskDiv.appendChild(TASKDCON)
+            taskDiv.appendChild(TASKDATECON)
+            taskDiv.appendChild(TASKPRIORITYCON)
+            taskDiv.appendChild(TRASHCON)
+            taskDiv.appendChild(EDITCON)
+            
         } else if(listOfToDos.firstChild.id ===  `weekDiv`){
-            card1.appendChild(TASKPCON)
-            card1.appendChild(TASKDCON)
-            card1.appendChild(TASKDATECON)
-            card1.appendChild(TASKPRIORITYCON)
-            card1.appendChild(TRASHCON)
-            card1.appendChild(EDITCON)
+            card1.appendChild(taskDiv)
+            taskCards.push(taskDiv)
+            taskDiv.appendChild(TASKPCON)
+            taskDiv.appendChild(TASKDCON)
+            taskDiv.appendChild(TASKDATECON)
+            taskDiv.appendChild(TASKPRIORITYCON)
+            taskDiv.appendChild(TRASHCON)
+            taskDiv.appendChild(EDITCON)
         } else if(listOfToDos.firstChild.id === `projectsDiv`){
-            card2.appendChild(TASKPCON)
-            card2.appendChild(TASKDCON)
-            card2.appendChild(TASKDATECON)
-            card2.appendChild(TASKPRIORITYCON)
-            card2.appendChild(TRASHCON)
-            card2.appendChild(EDITCON)
+            card2.appendChild(taskDiv)
+            taskCards.push(taskDiv)
+            taskDiv.appendChild(TASKPCON)
+            taskDiv.appendChild(TASKDCON)
+            taskDiv.appendChild(TASKDATECON)
+            taskDiv.appendChild(TASKPRIORITYCON)
+            taskDiv.appendChild(TRASHCON)
+            taskDiv.appendChild(EDITCON)
         }
+            
+             editModal()
+             const priP = document.querySelector('.TODOPri')
+             const dateP = document.querySelector('.dateP')
+             const descP = document.querySelector('.TODODescrip')
+             const TODOp = document.querySelector('.TODOp')
             TASKPCON.appendChild(CLONEDTASKP) 
             TASKDCON.appendChild(CLONEDTASKD)
             TASKDATECON.appendChild(CLONEDTASKDATE)
             TASKPRIORITYCON.appendChild(CLONEDTASKPRIORITY)
             TRASHCON.appendChild(TRASHimg)
-            EDITCON.appendChild(EDITimg)
+            TRASHCON.appendChild(EDITimg)
             CLONEDTASKP.textContent = `${tasks[i].chore}`
-            CLONEDTASKD.textContent = `${tasks[i].description}`
-            CLONEDTASKDATE.textContent = `${tasks[i].date}`
+            descP.textContent = `${tasks[i].description}`
+            dateP.textContent = `${tasks[i].date}`
             CLONEDTASKPRIORITY.textContent = `${tasks[i].priority}`
+            taskDiv.setAttribute('id', `${i}`)
+            TRASHimg.setAttribute('id', `${i}`)
+                
+
+         
     }
+    TRASHimg.addEventListener('click', deleteEle)
+    EDITimg.addEventListener('click', openEdit)
+ 
+
 }
+
+function deleteEle(e){
+    const TRASHIMG = document.querySelector('.trash')
+    let removal = e.currentTarget.parentNode.parentNode;
+    console.log(removal)
+    tasks.splice(TRASHIMG.id, 1)
+    removal.remove()
+    console.log(tasks)
+}
+
+
+
+
     
     //today div
     //week div
@@ -153,6 +197,7 @@ function displayToDo(task){
     //append radio button to TODO
     //element.required = true
     //document.getElementById('example').required = true
+    //setAttribute `${tasks.key}` for edit
 
 
 
