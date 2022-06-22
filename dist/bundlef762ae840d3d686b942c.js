@@ -39,7 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../forms */ "./src/modules/forms.js");
 
 
-var ToDo = function ToDo(chore, description, date, priority) {
+var ToDo = function ToDo(chore, description, date, priority, done) {
   var getChore = function getChore() {
     return chore;
   };
@@ -56,11 +56,16 @@ var ToDo = function ToDo(chore, description, date, priority) {
     return priority;
   };
 
+  var getDone = function getDone() {
+    return done;
+  };
+
   return {
     chore: getChore(),
     description: getDesc(),
     date: getDate(),
-    priority: getPriority()
+    priority: getPriority(),
+    done: getDone()
   };
 };
 
@@ -351,6 +356,55 @@ function heading() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (heading);
+
+/***/ }),
+
+/***/ "./src/modules/home.js":
+/*!*****************************!*\
+  !*** ./src/modules/home.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createHome": () => (/* binding */ createHome),
+/* harmony export */   "eventHome": () => (/* binding */ eventHome)
+/* harmony export */ });
+/* harmony import */ var _createElement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createElement */ "./src/createElement.js");
+
+
+function createHome() {
+  var sidebar = document.querySelector('.sidebar');
+  var homeTab = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('button', {
+    "class": 'home',
+    id: 'home'
+  });
+  sidebar.appendChild(homeTab);
+  homeTab.textContent = "Home";
+}
+
+function eventHome() {
+  var homeBtn = document.querySelector('.home');
+  var listOfToDos = document.querySelector('.listOfToDos');
+  var HOMEDIV = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'homeDiv',
+    id: 'homeDiv'
+  });
+  var card3 = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
+    "class": 'TaskCard',
+    id: "homeTask"
+  });
+  listOfToDos.appendChild(HOMEDIV);
+  HOMEDIV.appendChild(card3);
+  homeBtn.addEventListener('click', function () {
+    listOfToDos.replaceChildren();
+    listOfToDos.appendChild(HOMEDIV);
+    HOMEDIV.appendChild(card3);
+  });
+} //print hello function
+
+
+
 
 /***/ }),
 
@@ -1182,6 +1236,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_assets_note_edit_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../src/assets/note-edit.png */ "./src/assets/note-edit.png");
 /* harmony import */ var _src_modules_editModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../src/modules/editModal */ "./src/modules/editModal.js");
 /* harmony import */ var _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/openEdit */ "./src/modules/openEdit.js");
+/* harmony import */ var _src_modules_home__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/modules/home */ "./src/modules/home.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
 
 
 
@@ -1202,6 +1264,8 @@ var tasks = [];
 (0,_modules_modal__WEBPACK_IMPORTED_MODULE_6__["default"])();
 (0,_modules_popUp__WEBPACK_IMPORTED_MODULE_5__["default"])();
 (0,_modules_forms__WEBPACK_IMPORTED_MODULE_3__["default"])();
+(0,_src_modules_home__WEBPACK_IMPORTED_MODULE_12__.createHome)();
+(0,_src_modules_home__WEBPACK_IMPORTED_MODULE_12__.eventHome)();
 var submitBtn = document.querySelector('.submit');
 var listOfToDos = document.querySelector('.listOfToDos');
 var card = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
@@ -1213,6 +1277,7 @@ var card1 = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
 var card2 = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
   "class": 'TaskCard'
 });
+var card3 = document.getElementById('homeTask');
 var taskP = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('p', {
   "class": 'taskP'
 });
@@ -1278,13 +1343,11 @@ function addToDo() {
   var ToDoDescVal = document.querySelector('.TODODesc');
   var dateVal = document.querySelector('.dateInput');
   var priorityVal = document.querySelector('.priInput');
-  var task = (0,_src_modules_ToDoStorage_ToDo__WEBPACK_IMPORTED_MODULE_7__["default"])(ToDoVal.value, ToDoDescVal.value, dateVal.value, priorityVal.value);
+  var task = (0,_src_modules_ToDoStorage_ToDo__WEBPACK_IMPORTED_MODULE_7__["default"])(ToDoVal.value, ToDoDescVal.value, dateVal.value, priorityVal.value, "Not Done");
   tasks.push(task);
   console.log(tasks);
   return task;
 }
-
-events();
 
 function displayToDo(e) {
   //setup modal that pops up when edit img is clicked
@@ -1295,10 +1358,6 @@ function displayToDo(e) {
   var taskDiv = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
     "class": 'taskDiv'
   });
-  var TODAYDIV = document.querySelector('#todayDiv');
-  var WEEKDIV = document.querySelector('#weekDiv');
-  var PROJECTSDIV = document.querySelector('#projectsDiv');
-  var CLONEDCARD = card.cloneNode(true);
   var CLONEDTASKP = taskP.cloneNode(true);
   var CLONEDTASKD = taskD.cloneNode(true);
   var CLONEDTASKDATE = taskDate.cloneNode(true);
@@ -1323,74 +1382,161 @@ function displayToDo(e) {
     id: 'Icon',
     src: "".concat(edit.src)
   });
+  var RADIO = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('input', {
+    type: "checkbox",
+    "class": "taskComplete"
+  });
   var EDITDiv = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
     "class": 'edit1',
     id: 'editDiv',
     src: "".concat(edit.src)
   });
 
-  for (var i = 0; i < tasks.length; i += 1) {
-    //div for TASKSCARDDIV
-    //NOTES IS GONNA HAVE DIFFERENT FUNCTIONALITY DIFFERENT FROM TODODIVS
-    if (listOfToDos.firstChild.id === "todayDiv") {
-      card.appendChild(taskDiv);
-      taskCards.push(taskDiv);
-      taskDiv.appendChild(TASKPCON);
-      taskDiv.appendChild(TASKDCON);
-      taskDiv.appendChild(TASKDATECON);
-      taskDiv.appendChild(TASKPRIORITYCON);
-      taskDiv.appendChild(TRASHCON);
-      taskDiv.appendChild(EDITCON);
-    } else if (listOfToDos.firstChild.id === "weekDiv") {
-      card1.appendChild(taskDiv);
-      taskCards.push(taskDiv);
-      taskDiv.appendChild(TASKPCON);
-      taskDiv.appendChild(TASKDCON);
-      taskDiv.appendChild(TASKDATECON);
-      taskDiv.appendChild(TASKPRIORITYCON);
-      taskDiv.appendChild(TRASHCON);
-      taskDiv.appendChild(EDITCON);
-    } else if (listOfToDos.firstChild.id === "projectsDiv") {
-      card2.appendChild(taskDiv);
-      taskCards.push(taskDiv);
-      taskDiv.appendChild(TASKPCON);
-      taskDiv.appendChild(TASKDCON);
-      taskDiv.appendChild(TASKDATECON);
-      taskDiv.appendChild(TASKPRIORITYCON);
-      taskDiv.appendChild(TRASHCON);
-      taskDiv.appendChild(EDITCON);
-    }
+  var _iterator = _createForOfIteratorHelper(tasks),
+      _step;
 
-    (0,_src_modules_editModal__WEBPACK_IMPORTED_MODULE_10__["default"])();
-    var priP = document.querySelector('.TODOPri');
-    var dateP = document.querySelector('.dateP');
-    var descP = document.querySelector('.TODODescrip');
-    var TODOp = document.querySelector('.TODOp');
-    TASKPCON.appendChild(CLONEDTASKP);
-    TASKDCON.appendChild(CLONEDTASKD);
-    TASKDATECON.appendChild(CLONEDTASKDATE);
-    TASKPRIORITYCON.appendChild(CLONEDTASKPRIORITY);
-    TRASHCON.appendChild(TRASHimg);
-    TRASHCON.appendChild(EDITimg);
-    CLONEDTASKP.textContent = "".concat(tasks[i].chore);
-    descP.textContent = "".concat(tasks[i].description);
-    dateP.textContent = "".concat(tasks[i].date);
-    CLONEDTASKPRIORITY.textContent = "".concat(tasks[i].priority);
-    taskDiv.setAttribute('id', "".concat(i));
-    TRASHimg.setAttribute('id', "".concat(i));
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var task = _step.value;
+
+      //div for TASKSCARDDIV
+      //NOTES IS GONNA HAVE DIFFERENT FUNCTIONALITY DIFFERENT FROM TODODIVS
+      if (listOfToDos.firstChild.id === "todayDiv") {
+        card.appendChild(taskDiv);
+        taskCards.push(taskDiv);
+        taskDiv.appendChild(RADIO);
+        taskDiv.appendChild(TASKPCON);
+        taskDiv.appendChild(TASKDCON);
+        taskDiv.appendChild(TASKDATECON);
+        taskDiv.appendChild(TASKPRIORITYCON);
+        taskDiv.appendChild(TRASHCON);
+        taskDiv.appendChild(EDITCON);
+      } else if (listOfToDos.firstChild.id === "weekDiv") {
+        card1.appendChild(taskDiv);
+        taskCards.push(taskDiv);
+        taskDiv.appendChild(RADIO);
+        taskDiv.appendChild(TASKPCON);
+        taskDiv.appendChild(TASKDCON);
+        taskDiv.appendChild(TASKDATECON);
+        taskDiv.appendChild(TASKPRIORITYCON);
+        taskDiv.appendChild(TRASHCON);
+        taskDiv.appendChild(EDITCON);
+      } else if (listOfToDos.firstChild.id === "projectsDiv") {
+        card2.appendChild(taskDiv);
+        taskCards.push(taskDiv);
+        taskDiv.appendChild(RADIO);
+        taskDiv.appendChild(TASKPCON);
+        taskDiv.appendChild(TASKDCON);
+        taskDiv.appendChild(TASKDATECON);
+        taskDiv.appendChild(TASKPRIORITYCON);
+        taskDiv.appendChild(TRASHCON);
+        taskDiv.appendChild(EDITCON);
+      } else if (listOfToDos.firstChild.id === "homeDiv") {
+        card3.appendChild(taskDiv);
+        taskCards.push(taskDiv);
+        taskDiv.appendChild(RADIO);
+        taskDiv.appendChild(TASKPCON);
+        taskDiv.appendChild(TASKDCON);
+        taskDiv.appendChild(TASKDATECON);
+        taskDiv.appendChild(TASKPRIORITYCON);
+        taskDiv.appendChild(TRASHCON);
+        taskDiv.appendChild(EDITCON);
+      }
+
+      (0,_src_modules_editModal__WEBPACK_IMPORTED_MODULE_10__["default"])();
+      var dateP = document.querySelector('.dateP');
+      var descP = document.querySelector('.TODODescrip');
+      TASKPCON.appendChild(CLONEDTASKP);
+      TASKDCON.appendChild(CLONEDTASKD);
+      TASKDATECON.appendChild(CLONEDTASKDATE);
+      TASKPRIORITYCON.appendChild(CLONEDTASKPRIORITY);
+      TRASHCON.appendChild(TRASHimg);
+      TRASHCON.appendChild(EDITimg);
+      CLONEDTASKP.textContent = "".concat(task.chore);
+      descP.textContent = "".concat(task.description);
+      dateP.textContent = "".concat(task.date);
+      CLONEDTASKPRIORITY.textContent = "".concat(task.priority);
+      taskDiv.setAttribute('id', "".concat(task));
+      RADIO.setAttribute("data-task", "".concat(tasks.indexOf(task)));
+      TRASHimg.setAttribute('id', "".concat(tasks.indexOf(task)));
+      CLONEDTASKP.setAttribute("data-para", "".concat(tasks.indexOf(task)));
+      CLONEDTASKPRIORITY.setAttribute("data-pri", "".concat(tasks.indexOf(task)));
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
   }
 
-  TRASHimg.addEventListener('click', deleteEle);
+  TRASHimg.addEventListener('click', function (e) {
+    var currentTarget = e.target.parentNode.parentNode.childNodes[1];
+    deleteEle(findTask(tasks, currentTarget.textContent));
+  });
   EDITimg.addEventListener('click', _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__["default"]);
+  RADIO.addEventListener('click', taskDone); //setStorage()
 }
 
-function deleteEle(e) {
-  var TRASHIMG = document.querySelector('.trash');
-  var removal = e.currentTarget.parentNode.parentNode;
-  console.log(removal);
-  tasks.splice(TRASHIMG.id, 1);
-  removal.remove();
+events();
+
+function deleteEle(e, currentTask) {
+  var TRASHIMG = document.querySelector('.trash'); //let removal = e.currentTarget.parentNode.parentNode;
+
+  tasks.splice(currentTask, 1); //console.log(removal)
+  //removal.remove()
+
   console.log(tasks);
+}
+
+function findTask(tasks, chore) {
+  if (tasks.length === 0 || tasks.length === null) {
+    return;
+  }
+
+  var _iterator2 = _createForOfIteratorHelper(tasks),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var task = _step2.value;
+
+      if (task.chore === chore) {
+        console.log(tasks.indexOf(task));
+        return tasks.indexOf(task);
+      }
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+}
+
+function taskDone(e) {
+  tasks.forEach(function (task) {
+    var p = document.querySelector("[data-para= \"".concat(tasks.indexOf(task), "\"]"));
+    var pri = document.querySelector("[data-pri= \"".concat(tasks.indexOf(task), "\"]"));
+    var RADIO = document.querySelector("[data-task= \"".concat(tasks.indexOf(task), "\"]"));
+
+    if (RADIO !== e.target) {
+      return;
+    } else if (RADIO.checked === true) {
+      p.style.textDecoration = 'line-through';
+      pri.style.textDecoration = 'line-through';
+      task.done = true;
+      console.log(tasks);
+      return tasks.done;
+    } else if (RADIO.checked === false) {
+      p.style.textDecoration = 'none';
+      pri.style.textDecoration = 'none';
+      task.done = false;
+      console.log(tasks);
+      return tasks.done;
+    }
+  });
+}
+
+function setStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 } //today div
 //week div
 //project div
@@ -1406,4 +1552,4 @@ function deleteEle(e) {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle42502669491be27516e2.js.map
+//# sourceMappingURL=bundlef762ae840d3d686b942c.js.map
