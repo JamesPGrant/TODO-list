@@ -1346,6 +1346,7 @@ function addToDo() {
   var task = (0,_src_modules_ToDoStorage_ToDo__WEBPACK_IMPORTED_MODULE_7__["default"])(ToDoVal.value, ToDoDescVal.value, dateVal.value, priorityVal.value, "Not Done");
   tasks.push(task);
   console.log(tasks);
+  setStorage();
   return task;
 }
 
@@ -1458,7 +1459,7 @@ function displayToDo(e) {
       CLONEDTASKPRIORITY.textContent = "".concat(task.priority);
       taskDiv.setAttribute('id', "".concat(task));
       RADIO.setAttribute("data-task", "".concat(tasks.indexOf(task)));
-      TRASHimg.setAttribute('id', "".concat(tasks.indexOf(task)));
+      TRASHimg.setAttribute('data-trash', "".concat(tasks.indexOf(task)));
       CLONEDTASKP.setAttribute("data-para", "".concat(tasks.indexOf(task)));
       CLONEDTASKPRIORITY.setAttribute("data-pri", "".concat(tasks.indexOf(task)));
     }
@@ -1469,7 +1470,9 @@ function displayToDo(e) {
   }
 
   TRASHimg.addEventListener('click', function (e) {
-    var currentTarget = e.target.parentNode.parentNode.childNodes[1];
+    var currentTarget = e.currentTarget.parentNode.parentNode;
+    console.log(currentTarget);
+    currentTarget.remove();
     deleteEle(findTask(tasks, currentTarget.textContent));
   });
   EDITimg.addEventListener('click', _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__["default"]);
@@ -1478,13 +1481,14 @@ function displayToDo(e) {
 
 events();
 
-function deleteEle(e, currentTask) {
-  var TRASHIMG = document.querySelector('.trash'); //let removal = e.currentTarget.parentNode.parentNode;
-
+function deleteEle(currentTask) {
+  //const TRASHIMG = document.querySelector('.trash')
+  //let removal = e.currentTarget.parentNode.parentNode
   tasks.splice(currentTask, 1); //console.log(removal)
-  //removal.remove()
+  //currentTask.remove()
 
   console.log(tasks);
+  localStorage.removeItem('tasks');
 }
 
 function findTask(tasks, chore) {
@@ -1524,12 +1528,14 @@ function taskDone(e) {
       pri.style.textDecoration = 'line-through';
       task.done = true;
       console.log(tasks);
+      setStorage();
       return tasks.done;
     } else if (RADIO.checked === false) {
       p.style.textDecoration = 'none';
       pri.style.textDecoration = 'none';
       task.done = false;
       console.log(tasks);
+      setStorage();
       return tasks.done;
     }
   });
@@ -1552,4 +1558,4 @@ function setStorage() {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlef762ae840d3d686b942c.js.map
+//# sourceMappingURL=bundle5d8e6c4a03d7b9cb70d6.js.map

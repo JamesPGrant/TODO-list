@@ -91,7 +91,7 @@ function addToDo(){
     const task = ToDo(ToDoVal.value, ToDoDescVal.value,dateVal.value, priorityVal.value, `Not Done`)
      tasks.push(task)
     console.log(tasks)
-    
+    setStorage()
     return task
 }
 
@@ -178,13 +178,15 @@ function displayToDo(e){
             CLONEDTASKPRIORITY.textContent = `${task.priority}`
             taskDiv.setAttribute('id', `${task}`)
             RADIO.setAttribute(`data-task`, `${tasks.indexOf(task)}`)
-            TRASHimg.setAttribute('id', `${tasks.indexOf(task)}`)
+            TRASHimg.setAttribute('data-trash', `${tasks.indexOf(task)}`)
             CLONEDTASKP.setAttribute(`data-para`, `${tasks.indexOf(task)}`)
             CLONEDTASKPRIORITY.setAttribute(`data-pri`, `${tasks.indexOf(task)}`)
 
     }
     TRASHimg.addEventListener('click', (e)=>{
-        const currentTarget = e.target.parentNode.parentNode.childNodes[1]
+        const currentTarget = e.currentTarget.parentNode.parentNode
+        console.log(currentTarget)
+        currentTarget.remove()
         deleteEle(findTask(tasks, currentTarget.textContent))
     })
     EDITimg.addEventListener('click', openEdit)
@@ -194,13 +196,14 @@ function displayToDo(e){
 
 events()
 
-function deleteEle(e, currentTask){
-    const TRASHIMG = document.querySelector('.trash')
-    //let removal = e.currentTarget.parentNode.parentNode;
+function deleteEle(currentTask){
+    //const TRASHIMG = document.querySelector('.trash')
+    //let removal = e.currentTarget.parentNode.parentNode
     tasks.splice(currentTask,  1)
     //console.log(removal)
-    //removal.remove()
+    //currentTask.remove()
     console.log(tasks)
+    localStorage.removeItem('tasks')
 }
 
 function findTask(tasks, chore){
@@ -226,14 +229,17 @@ function taskDone(e){
                 pri.style.textDecoration = 'line-through'
                 task.done = true
                 console.log(tasks)
+                setStorage()
                 return tasks.done
             } else if(RADIO.checked ===false){
                 p.style.textDecoration = 'none'
                 pri.style.textDecoration = 'none'
                 task.done = false
                 console.log(tasks)
+                setStorage()
                 return tasks.done
             }
+            
     })
 
 
