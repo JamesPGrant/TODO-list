@@ -1462,6 +1462,7 @@ function displayToDo(e) {
       TRASHimg.setAttribute('data-trash', "".concat(tasks.indexOf(task)));
       CLONEDTASKP.setAttribute("data-para", "".concat(tasks.indexOf(task)));
       CLONEDTASKPRIORITY.setAttribute("data-pri", "".concat(tasks.indexOf(task)));
+      localStorage.setItem('taskCards', JSON.stringify(taskCards));
     }
   } catch (err) {
     _iterator.e(err);
@@ -1473,6 +1474,7 @@ function displayToDo(e) {
     var currentTarget = e.currentTarget.parentNode.parentNode;
     console.log(currentTarget);
     currentTarget.remove();
+    localStorage.removeItem('currentTarget', JSON.stringify(currentTarget));
     deleteEle(findTask(tasks, currentTarget.textContent));
   });
   EDITimg.addEventListener('click', _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__["default"]);
@@ -1558,4 +1560,4 @@ function setStorage() {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle5d8e6c4a03d7b9cb70d6.js.map
+//# sourceMappingURL=bundledbdafa72f98ce1ae4b35.js.map

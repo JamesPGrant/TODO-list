@@ -16,10 +16,10 @@ let taskCards = []
 let tasks = [];
 heading()
 sidebar()
+createHome()
 modal()
 popUp()
 forms()
-createHome()
 eventHome()
 
 
@@ -196,14 +196,12 @@ function displayToDo(e){
 
 events()
 
+//local storage forEach
 function deleteEle(currentTask){
-    //const TRASHIMG = document.querySelector('.trash')
-    //let removal = e.currentTarget.parentNode.parentNode
     tasks.splice(currentTask,  1)
-    //console.log(removal)
-    //currentTask.remove()
     console.log(tasks)
-    localStorage.removeItem('tasks')
+    localStorage.removeItem(currentTask)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
 function findTask(tasks, chore){
@@ -250,8 +248,18 @@ function setStorage(){
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
+function refreshPage(){
+    if (window.performance){
+        return
+    }
+    if(performance.navigation.type == 1){
+        console.log('ok')
+    } else {
+        return
+    }
 
-
+}
+refreshPage()
 
 
 
