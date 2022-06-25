@@ -24,6 +24,7 @@ eventHome()
 
 
 
+
 const submitBtn = document.querySelector('.submit')
 const listOfToDos = document.querySelector('.listOfToDos')
 const card = createElement('div', {class:'TaskCard'})
@@ -39,8 +40,6 @@ const edit = new Image()
 edit.src = notes
 const del = new Image()
 del.src = trash
-
-
 
 
 
@@ -73,7 +72,7 @@ function events(e){
     submitBtn.addEventListener('click',  (e) =>{
         e.preventDefault()
         submitBtn.addEventListener('click', addToDo)
-        submitBtn.addEventListener('click', displayToDo)
+        //submitBtn.addEventListener('click', displayToDo)
     })
 
     
@@ -92,16 +91,21 @@ function addToDo(){
      tasks.push(task)
     console.log(tasks)
     setStorage()
+    displayToDo(task)
     return task
 }
 
 
-function displayToDo(e){
+function displayToDo(currentTask){
     //setup modal that pops up when edit img is clicked
     //setup different divs first than set up modal for less confusion
     //TodayDiv, WeekDiv, ProjectsDiv
     //append specific div and then append Home
     //if div.id === today, week, projects append that div
+        let currentChore = localStorage.getItem('chore')
+        let currentDesc = localStorage.getItem('description')
+        let currentDate = localStorage.getItem('date')
+        let currentPriority = localStorage.getItem('priority')
         const taskDiv = createElement('div', {class:'taskDiv'})
         const CLONEDTASKP = taskP.cloneNode(true)
         const CLONEDTASKD = taskD.cloneNode(true)
@@ -151,7 +155,7 @@ function displayToDo(e){
             taskDiv.appendChild(TASKPRIORITYCON)
             taskDiv.appendChild(TRASHCON)
             taskDiv.appendChild(EDITCON)
-        } else if(listOfToDos.firstChild.id === `homeDiv`){
+        } else {
             card3.appendChild(taskDiv)
             taskCards.push(taskDiv)
             taskDiv.appendChild(RADIO)
@@ -162,7 +166,6 @@ function displayToDo(e){
             taskDiv.appendChild(TRASHCON)
             taskDiv.appendChild(EDITCON)
         }
-            
         editModal()
              const dateP = document.querySelector('.dateP')
              const descP = document.querySelector('.TODODescrip')
@@ -172,15 +175,20 @@ function displayToDo(e){
             TASKPRIORITYCON.appendChild(CLONEDTASKPRIORITY)
             TRASHCON.appendChild(TRASHimg)
             TRASHCON.appendChild(EDITimg)
-            CLONEDTASKP.textContent = `${task.chore}`
-            descP.textContent = `${task.description}`
-            dateP.textContent = `${task.date}`
-            CLONEDTASKPRIORITY.textContent = `${task.priority}`
-            taskDiv.setAttribute('id', `${task}`)
-            RADIO.setAttribute(`data-task`, `${tasks.indexOf(task)}`)
-            TRASHimg.setAttribute('data-trash', `${tasks.indexOf(task)}`)
-            CLONEDTASKP.setAttribute(`data-para`, `${tasks.indexOf(task)}`)
-            CLONEDTASKPRIORITY.setAttribute(`data-pri`, `${tasks.indexOf(task)}`)
+            CLONEDTASKP.textContent = `${currentTask.chore}`
+            descP.textContent = `${currentTask.description}`
+            dateP.textContent = `${currentTask.date}`
+            CLONEDTASKPRIORITY.textContent = `${currentTask.priority}`
+            
+        for(let j = 0; j < tasks.length; j++){
+            taskDiv.setAttribute('id', `${j}`)
+            RADIO.setAttribute(`data-task`, `${j}`)
+            TRASHimg.setAttribute('data-trash', `${j}`)
+            CLONEDTASKP.setAttribute(`data-para`, `${j}`)
+            CLONEDTASKPRIORITY.setAttribute(`data-pri`, `${j}`)
+        }
+           
+        
 
     }
     TRASHimg.addEventListener('click', (e)=>{
@@ -202,6 +210,7 @@ function deleteEle(currentTask){
     console.log(tasks)
     localStorage.removeItem(currentTask)
     localStorage.setItem('tasks', JSON.stringify(tasks))
+    //setStorage()
 }
 
 function findTask(tasks, chore){
@@ -217,27 +226,28 @@ function findTask(tasks, chore){
 
 function taskDone(e){
     tasks.forEach(function(task){
-        const p = document.querySelector(`[data-para= "${tasks.indexOf(task)}"]`)
-        const pri = document.querySelector(`[data-pri= "${tasks.indexOf(task)}"]`)
-        const RADIO = document.querySelector(`[data-task= "${tasks.indexOf(task)}"]`)
-            if(RADIO !== e.target ){
-                return
-            } else if (RADIO.checked === true){
+        const p = document.querySelector(`[data-para= "${task}"]`)
+        const pri = document.querySelector(`[data-pri= "${task}"]`)
+        const RADIO = document.querySelector(`[data-task= "${task}"]`)
+    
+        if(RADIO !== e.currentTarget){
+            return
+        }
+        if(RADIO.checked === true){
                 p.style.textDecoration = 'line-through'
                 pri.style.textDecoration = 'line-through'
                 task.done = true
                 console.log(tasks)
-                setStorage()
+                localStorage.setItem('done', task.done)
                 return tasks.done
-            } else if(RADIO.checked ===false){
+            } else if(RADIO.checked === false){
                 p.style.textDecoration = 'none'
                 pri.style.textDecoration = 'none'
                 task.done = false
                 console.log(tasks)
-                setStorage()
+                localStorage.setItem('done', task.done)
                 return tasks.done
             }
-            
     })
 
 
@@ -253,13 +263,31 @@ function refreshPage(){
         return
     }
     if(performance.navigation.type == 1){
-        console.log('ok')
+        console.log('hello')
     } else {
         return
     }
 
 }
 refreshPage()
+
+function getStorage(){
+    let keys = Object.keys(localStorage);
+    keys.forEach(key =>{
+       if(!localStorage.getItem('tasks')){
+           return
+       }
+       else{
+           let p = localStorage.getItem('tasks')
+           let parse = JSON.parse(p)
+           console.log(parse)
+           tasks = [...parse]
+           console.log(tasks)
+           tasks.forEach(task => displayToDo(task))
+       }
+    })
+}
+getStorage()
 
 
 
@@ -275,6 +303,17 @@ refreshPage()
     //element.required = true
     //document.getElementById('example').required = true
     //setAttribute `${tasks.key}` for edit
+
+    /*else if(listOfToDos.firstChild.id === `homeDiv`){
+            card3.appendChild(taskDiv)
+            taskCards.push(taskDiv)
+            taskDiv.appendChild(RADIO)
+            taskDiv.appendChild(TASKPCON)
+            taskDiv.appendChild(TASKDCON)
+            taskDiv.appendChild(TASKDATECON)
+            taskDiv.appendChild(TASKPRIORITYCON)
+            taskDiv.appendChild(TRASHCON)
+            taskDiv.appendChild(EDITCON)*/
 
 
 

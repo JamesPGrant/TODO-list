@@ -583,7 +583,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  padding: 0;\n  margin: 0;\n}\n\n.container {\n  display: grid;\n  height: 100vh;\n  width: 100vw;\n  grid-template: 1fr 1fr 1fr 5fr/1fr 5fr 1fr;\n}\n\n.sidebar {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  grid-row-start: 2;\n  grid-row-end: 5;\n  grid-column: 1;\n  height: 100%;\n  border-right: 2px solid black;\n}\n\n.sidebar Button {\n  border: none;\n  font-size: 24px;\n  transition: 0.5s;\n}\n\n.sidebar Button:hover {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n  transform: translateY(20%);\n  font-size: 36px;\n}\n\n.headingDiv {\n  grid-area: 1/5/1/1;\n  background-color: #C38D9E;\n  width: 100%;\n}\n\n.heading {\n  color: rgb(243, 242, 242);\n}\n\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.modalCon {\n  background-color: #fefefe;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.close {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.listOfToDos {\n  grid-area: 2/5/2/5;\n  display: flex;\n  flex-direction: column;\n  grid-row-start: 2;\n  grid-column-start: 2;\n}\n\n.taskDiv {\n  display: flex;\n  flex-direction: row;\n}\n\n.editModal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.editCon {\n  background-color: #fefefe;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.closeEdit {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.closeEdit:hover,\n.closeEdit:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.trashCon {\n  display: flex;\n  border: none;\n}\n\n.editCon {\n  border: none;\n}\n\n.taskCard {\n  width: 100px;\n  height: 300px;\n}", "",{"version":3,"sources":["webpack://./styles/main.scss"],"names":[],"mappings":"AAIA;EACI,UAAA;EACA,SAAA;AAHJ;;AAMA;EACI,aAAA;EACA,aAAA;EACA,YAAA;EACA,0CAAA;AAHJ;;AAMA;EACI,aAAA;EACA,sBAAA;EACA,6BAAA;EACA,iBAAA;EACA,eAAA;EACA,cAAA;EACA,YAAA;EACA,6BAAA;AAHJ;;AAMA;EACI,YAAA;EACA,eAAA;EACA,gBAAA;AAHJ;;AAMA;EACI,cAAA;EACA,qBAAA;EACA,eAAA;EACA,0BAAA;EACA,eAAA;AAHJ;;AAMA;EACI,kBAAA;EACA,yBAAA;EACA,WAAA;AAHJ;;AAKA;EACI,yBAAA;AAFJ;;AAKA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAFJ;;AAKA;EACI,yBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAFJ;;AAKA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAFJ;;AAKA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAFJ;;AAKA;EACI,kBAAA;EACA,aAAA;EACA,sBAAA;EACA,iBAAA;EACA,oBAAA;AAFJ;;AAKA;EACI,aAAA;EACA,mBAAA;AAFJ;;AAMA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAHJ;;AAMA;EACI,yBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAHJ;;AAMA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAHJ;;AAMA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,aAAA;EACA,YAAA;AAHJ;;AAMA;EACI,YAAA;AAHJ;;AAMA;EACI,YAAA;EACA,aAAA;AAHJ","sourcesContent":["$low-Prority: #28a745;\n$med-priority: #ffc107;\n$high-priority: #dc3545;\n\nbody{\n    padding:0;\n    margin:0;\n\n}\n.container{\n    display:grid;\n    height:100vh;\n    width:100vw;\n    grid-template: 1fr 1fr 1fr 5fr / 1fr 5fr 1fr;\n}\n\n.sidebar{\n    display:flex;\n    flex-direction:column;\n    justify-content:space-around;\n    grid-row-start:2;\n    grid-row-end:5;\n    grid-column:1;\n    height:100%;\n    border-right:2px solid black;\n}\n\n.sidebar Button{\n    border:none;\n    font-size:24px;\n    transition:.5s\n}\n\n.sidebar Button:hover{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n    transform:translateY(20%);\n    font-size:36px;\n}\n\n.headingDiv{\n    grid-area:1/5/1/1;\n    background-color: #C38D9E;\n    width:100%;\n}\n.heading{\n    color:rgb(243, 242, 242)\n}\n\n.modal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.modalCon{\n    background-color:#fefefe;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.close{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.close:hover,\n.close:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.listOfToDos{\n    grid-area:2/5/2/5;\n    display:flex;\n    flex-direction:column;\n    grid-row-start: 2;\n    grid-column-start:2;\n}\n\n.taskDiv{\n    display:flex;\n    flex-direction: row;\n\n}\n\n.editModal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.editCon{\n    background-color:#fefefe;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.closeEdit{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.closeEdit:hover,\n.closeEdit:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.trashCon{\n    display:flex;\n    border:none;\n}\n\n.editCon{\n    border:none;\n}\n\n.taskCard{\n    width:100px;;\n    height:300px\n}\n\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  padding: 0;\n  margin: 0;\n}\n\n.container {\n  display: grid;\n  height: 100vh;\n  width: 100vw;\n  grid-template: 1fr 1fr 1fr 5fr/1fr 5fr 1fr;\n}\n\n.sidebar {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  grid-row-start: 2;\n  grid-row-end: 5;\n  grid-column: 1;\n  height: 100%;\n  border-right: 2px solid black;\n}\n\n.sidebar Button {\n  border: none;\n  font-size: 24px;\n  transition: 0.5s;\n}\n\n.sidebar Button:hover {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n  transform: translateY(20%);\n  font-size: 36px;\n}\n\n.headingDiv {\n  display: flex;\n  align-items: center;\n  grid-area: 1/5/1/1;\n  background-color: #C38D9E;\n  width: 100%;\n}\n\n.heading {\n  margin-left: 10px;\n  color: rgb(243, 242, 242);\n}\n\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.modalCon {\n  background-color: #fefefe;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.close {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.listOfToDos {\n  grid-area: 2/5/2/5;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  border-radius: 20px;\n  height: 100%;\n  grid-row-start: 2;\n  background-color: #e2e8f0;\n  grid-column-start: 2;\n}\n\n.ToDoTasks {\n  display: flex;\n}\n\n.taskDiv {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n}\n\n.editModal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.editCon {\n  background-color: #e2e8f0;\n  margin: 15% atuo;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n.closeEdit {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.closeEdit:hover,\n.closeEdit:focus {\n  color: #ef4444;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.trashCon {\n  display: flex;\n  border: none;\n}\n\n.editCon {\n  border: none;\n}\n\n.taskCard {\n  width: 100px;\n  height: 300px;\n}", "",{"version":3,"sources":["webpack://./styles/main.scss"],"names":[],"mappings":"AAKA;EACI,UAAA;EACA,SAAA;AAJJ;;AAOA;EACI,aAAA;EACA,aAAA;EACA,YAAA;EACA,0CAAA;AAJJ;;AAOA;EACI,aAAA;EACA,sBAAA;EACA,6BAAA;EACA,iBAAA;EACA,eAAA;EACA,cAAA;EACA,YAAA;EACA,6BAAA;AAJJ;;AAOA;EACI,YAAA;EACA,eAAA;EACA,gBAAA;AAJJ;;AAOA;EACI,cAAA;EACA,qBAAA;EACA,eAAA;EACA,0BAAA;EACA,eAAA;AAJJ;;AAOA;EACI,aAAA;EACA,mBAAA;EACA,kBAAA;EACA,yBAAA;EACA,WAAA;AAJJ;;AAMA;EACI,iBAAA;EACA,yBAAA;AAHJ;;AAMA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAHJ;;AAMA;EACI,yBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAHJ;;AAMA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAHJ;;AAMA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAHJ;;AAMA;EACI,kBAAA;EACA,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,YAAA;EACA,iBAAA;EACA,yBA9FO;EA+FP,oBAAA;AAHJ;;AAKA;EACI,aAAA;AAFJ;;AAIA;EACI,aAAA;EACA,mBAAA;EACA,SAAA;AADJ;;AAKA;EACI,aAAA;EACA,eAAA;EACA,UAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,8BAAA;EACA,oCAAA;AAFJ;;AAKA;EACI,yBAzHO;EA0HP,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAFJ;;AAKA;EACI,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAFJ;;AAKA;;EAEI,cAAA;EACA,qBAAA;EACA,eAAA;AAFJ;;AAKA;EACI,aAAA;EACA,YAAA;AAFJ;;AAKA;EACI,YAAA;AAFJ;;AAKA;EACI,YAAA;EACA,aAAA;AAFJ","sourcesContent":["$low-Prority: #28a745;\n$med-priority: #ffc107;\n$high-priority: #dc3545;\n$bg-color: #e2e8f0;\n\nbody{\n    padding:0;\n    margin:0;\n\n}\n.container{\n    display:grid;\n    height:100vh;\n    width:100vw;\n    grid-template: 1fr 1fr 1fr 5fr / 1fr 5fr 1fr;\n}\n\n.sidebar{\n    display:flex;\n    flex-direction:column;\n    justify-content:space-around;\n    grid-row-start:2;\n    grid-row-end:5;\n    grid-column:1;\n    height:100%;\n    border-right:2px solid black;\n}\n\n.sidebar Button{\n    border:none;\n    font-size:24px;\n    transition:.5s\n}\n\n.sidebar Button:hover{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n    transform:translateY(20%);\n    font-size:36px;\n}\n\n.headingDiv{\n    display:flex;\n    align-items:center;\n    grid-area:1/5/1/1;\n    background-color: #C38D9E;\n    width:100%;\n}\n.heading{\n    margin-left:10px;\n    color:rgb(243, 242, 242)\n}\n\n.modal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.modalCon{\n    background-color:#fefefe;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.close{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.close:hover,\n.close:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.listOfToDos{\n    grid-area:2/5/2/5;\n    display:flex;\n    flex-direction:column;\n    justify-content:center;\n    border-radius:20px;\n    height:100%;\n    grid-row-start: 2;\n    background-color: $bg-color;\n    grid-column-start:2;\n}\n.ToDoTasks{\n    display:flex;\n}\n.taskDiv{\n    display:flex;\n    flex-direction: row;\n    gap: 10px;\n    \n}\n\n.editModal{\n    display:none;\n    position:fixed;\n    z-index:1;\n    left: 0;\n    top:0;\n    width:100%;\n    height:100%;\n    overflow:auto;\n    background-color:rgb(0,0,0);\n    background-color: rgba(0,0,0,0.4);\n}\n\n.editCon{\n    background-color: $bg-color;\n    margin:15% atuo;\n    padding:20px;\n    border: 1px solid #888;\n    width:80%;\n}\n\n.closeEdit{\n    color: #aaa;\n    float:right;\n    font-size:28px;\n    font-weight:bold;\n}\n\n.closeEdit:hover,\n.closeEdit:focus{\n    color: #ef4444;\n    text-decoration:none;\n    cursor:pointer;\n}\n\n.trashCon{\n    display:flex;\n    border:none;\n}\n\n.editCon{\n    border:none;\n}\n\n.taskCard{\n    width:100px;;\n    height:300px\n}\n\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1237,6 +1237,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_modules_editModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../src/modules/editModal */ "./src/modules/editModal.js");
 /* harmony import */ var _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/openEdit */ "./src/modules/openEdit.js");
 /* harmony import */ var _src_modules_home__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/modules/home */ "./src/modules/home.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -1261,10 +1269,10 @@ var taskCards = [];
 var tasks = [];
 (0,_modules_heading__WEBPACK_IMPORTED_MODULE_1__["default"])();
 (0,_modules_sidebar__WEBPACK_IMPORTED_MODULE_2__["default"])();
+(0,_src_modules_home__WEBPACK_IMPORTED_MODULE_12__.createHome)();
 (0,_modules_modal__WEBPACK_IMPORTED_MODULE_6__["default"])();
 (0,_modules_popUp__WEBPACK_IMPORTED_MODULE_5__["default"])();
 (0,_modules_forms__WEBPACK_IMPORTED_MODULE_3__["default"])();
-(0,_src_modules_home__WEBPACK_IMPORTED_MODULE_12__.createHome)();
 (0,_src_modules_home__WEBPACK_IMPORTED_MODULE_12__.eventHome)();
 var submitBtn = document.querySelector('.submit');
 var listOfToDos = document.querySelector('.listOfToDos');
@@ -1330,8 +1338,7 @@ function events(e) {
   });
   submitBtn.addEventListener('click', function (e) {
     e.preventDefault();
-    submitBtn.addEventListener('click', addToDo);
-    submitBtn.addEventListener('click', displayToDo);
+    submitBtn.addEventListener('click', addToDo); //submitBtn.addEventListener('click', displayToDo)
   });
 }
 
@@ -1347,15 +1354,20 @@ function addToDo() {
   tasks.push(task);
   console.log(tasks);
   setStorage();
+  displayToDo(task);
   return task;
 }
 
-function displayToDo(e) {
+function displayToDo(currentTask) {
   //setup modal that pops up when edit img is clicked
   //setup different divs first than set up modal for less confusion
   //TodayDiv, WeekDiv, ProjectsDiv
   //append specific div and then append Home
   //if div.id === today, week, projects append that div
+  var currentChore = localStorage.getItem('chore');
+  var currentDesc = localStorage.getItem('description');
+  var currentDate = localStorage.getItem('date');
+  var currentPriority = localStorage.getItem('priority');
   var taskDiv = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', {
     "class": 'taskDiv'
   });
@@ -1432,7 +1444,7 @@ function displayToDo(e) {
         taskDiv.appendChild(TASKPRIORITYCON);
         taskDiv.appendChild(TRASHCON);
         taskDiv.appendChild(EDITCON);
-      } else if (listOfToDos.firstChild.id === "homeDiv") {
+      } else {
         card3.appendChild(taskDiv);
         taskCards.push(taskDiv);
         taskDiv.appendChild(RADIO);
@@ -1453,16 +1465,18 @@ function displayToDo(e) {
       TASKPRIORITYCON.appendChild(CLONEDTASKPRIORITY);
       TRASHCON.appendChild(TRASHimg);
       TRASHCON.appendChild(EDITimg);
-      CLONEDTASKP.textContent = "".concat(task.chore);
-      descP.textContent = "".concat(task.description);
-      dateP.textContent = "".concat(task.date);
-      CLONEDTASKPRIORITY.textContent = "".concat(task.priority);
-      taskDiv.setAttribute('id', "".concat(task));
-      RADIO.setAttribute("data-task", "".concat(tasks.indexOf(task)));
-      TRASHimg.setAttribute('data-trash', "".concat(tasks.indexOf(task)));
-      CLONEDTASKP.setAttribute("data-para", "".concat(tasks.indexOf(task)));
-      CLONEDTASKPRIORITY.setAttribute("data-pri", "".concat(tasks.indexOf(task)));
-      localStorage.setItem('taskCards', JSON.stringify(taskCards));
+      CLONEDTASKP.textContent = "".concat(currentTask.chore);
+      descP.textContent = "".concat(currentTask.description);
+      dateP.textContent = "".concat(currentTask.date);
+      CLONEDTASKPRIORITY.textContent = "".concat(currentTask.priority);
+
+      for (var j = 0; j < tasks.length; j++) {
+        taskDiv.setAttribute('id', "".concat(j));
+        RADIO.setAttribute("data-task", "".concat(j));
+        TRASHimg.setAttribute('data-trash', "".concat(j));
+        CLONEDTASKP.setAttribute("data-para", "".concat(j));
+        CLONEDTASKPRIORITY.setAttribute("data-pri", "".concat(j));
+      }
     }
   } catch (err) {
     _iterator.e(err);
@@ -1474,23 +1488,19 @@ function displayToDo(e) {
     var currentTarget = e.currentTarget.parentNode.parentNode;
     console.log(currentTarget);
     currentTarget.remove();
-    localStorage.removeItem('currentTarget', JSON.stringify(currentTarget));
     deleteEle(findTask(tasks, currentTarget.textContent));
   });
   EDITimg.addEventListener('click', _modules_openEdit__WEBPACK_IMPORTED_MODULE_11__["default"]);
   RADIO.addEventListener('click', taskDone); //setStorage()
 }
 
-events();
+events(); //local storage forEach
 
 function deleteEle(currentTask) {
-  //const TRASHIMG = document.querySelector('.trash')
-  //let removal = e.currentTarget.parentNode.parentNode
-  tasks.splice(currentTask, 1); //console.log(removal)
-  //currentTask.remove()
-
+  tasks.splice(currentTask, 1);
   console.log(tasks);
-  localStorage.removeItem('tasks');
+  localStorage.removeItem(currentTask);
+  localStorage.setItem('tasks', JSON.stringify(tasks)); //setStorage()
 }
 
 function findTask(tasks, chore) {
@@ -1519,25 +1529,27 @@ function findTask(tasks, chore) {
 
 function taskDone(e) {
   tasks.forEach(function (task) {
-    var p = document.querySelector("[data-para= \"".concat(tasks.indexOf(task), "\"]"));
-    var pri = document.querySelector("[data-pri= \"".concat(tasks.indexOf(task), "\"]"));
-    var RADIO = document.querySelector("[data-task= \"".concat(tasks.indexOf(task), "\"]"));
+    var p = document.querySelector("[data-para= \"".concat(task, "\"]"));
+    var pri = document.querySelector("[data-pri= \"".concat(task, "\"]"));
+    var RADIO = document.querySelector("[data-task= \"".concat(task, "\"]"));
 
-    if (RADIO !== e.target) {
+    if (RADIO !== e.currentTarget) {
       return;
-    } else if (RADIO.checked === true) {
+    }
+
+    if (RADIO.checked === true) {
       p.style.textDecoration = 'line-through';
       pri.style.textDecoration = 'line-through';
       task.done = true;
       console.log(tasks);
-      setStorage();
+      localStorage.setItem('done', task.done);
       return tasks.done;
     } else if (RADIO.checked === false) {
       p.style.textDecoration = 'none';
       pri.style.textDecoration = 'none';
       task.done = false;
       console.log(tasks);
-      setStorage();
+      localStorage.setItem('done', task.done);
       return tasks.done;
     }
   });
@@ -1545,7 +1557,41 @@ function taskDone(e) {
 
 function setStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
-} //today div
+}
+
+function refreshPage() {
+  if (window.performance) {
+    return;
+  }
+
+  if (performance.navigation.type == 1) {
+    console.log('hello');
+  } else {
+    return;
+  }
+}
+
+refreshPage();
+
+function getStorage() {
+  var keys = Object.keys(localStorage);
+  keys.forEach(function (key) {
+    if (!localStorage.getItem('tasks')) {
+      return;
+    } else {
+      var p = localStorage.getItem('tasks');
+      var parse = JSON.parse(p);
+      console.log(parse);
+      tasks = _toConsumableArray(parse);
+      console.log(tasks);
+      tasks.forEach(function (task) {
+        return displayToDo(task);
+      });
+    }
+  });
+}
+
+getStorage(); //today div
 //week div
 //project div
 //notes div
@@ -1556,8 +1602,19 @@ function setStorage() {
 //element.required = true
 //document.getElementById('example').required = true
 //setAttribute `${tasks.key}` for edit
+
+/*else if(listOfToDos.firstChild.id === `homeDiv`){
+        card3.appendChild(taskDiv)
+        taskCards.push(taskDiv)
+        taskDiv.appendChild(RADIO)
+        taskDiv.appendChild(TASKPCON)
+        taskDiv.appendChild(TASKDCON)
+        taskDiv.appendChild(TASKDATECON)
+        taskDiv.appendChild(TASKPRIORITYCON)
+        taskDiv.appendChild(TRASHCON)
+        taskDiv.appendChild(EDITCON)*/
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundledbdafa72f98ce1ae4b35.js.map
+//# sourceMappingURL=bundle025cd3463f6799e8c536.js.map
