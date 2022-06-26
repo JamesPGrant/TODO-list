@@ -35,40 +35,28 @@ const taskP = createElement('p', {class:'taskP'})
 const taskD = createElement('p', {class:'taskD'})
 const taskDate = createElement('p', {class:'taskDate'})
 const taskPriority = createElement('p', {class:'taskPriority'})
+const p = document.querySelector('.taskP')
 
 const edit = new Image()
 edit.src = notes
 const del = new Image()
 del.src = trash
+const Today = document.querySelector('.Today')
+const Week = document.querySelector('.Week')
+const Projects = document.querySelector('.Projects')
 
 
-
-function events(e){
+function events(currentTask){
     //append container to event tab, if container === today/week/project
-    const Today = document.querySelector('.Today')
-    const Week = document.querySelector('.Week')
-    const Projects = document.querySelector('.Projects')
+   
     const priority = document.querySelector('#priority')
-    Today.addEventListener('click', () =>{
-        listOfToDos.replaceChildren();
-        const TODAYDIV = createElement('div', {class:'ToDoTasks', id:'todayDiv'})
-        listOfToDos.appendChild(TODAYDIV)
-        TODAYDIV.appendChild(card)
-    })
-    Week.addEventListener('click',()=>{
-        listOfToDos.replaceChildren();
-        const WEEKDIV =  createElement('div', {class:'ToDoTasks', id:'weekDiv'})
-        listOfToDos.appendChild(WEEKDIV)
-        WEEKDIV.appendChild(card1)
-        
-    })
-    Projects.addEventListener('click', ()=>{
-        listOfToDos.replaceChildren();
-        const PROJECTSDIV = createElement('div', {class:'ToDoTasks', id:'projectsDiv'})
-        listOfToDos.appendChild(PROJECTSDIV)
-        PROJECTSDIV.appendChild(card2)
-        
-    })
+    const p = document.querySelector('.taskP')
+    Today.addEventListener('click', todayHandler)
+       
+    Week.addEventListener('click', weekHandler)
+       
+    Projects.addEventListener('click', projectHandler)
+      
     submitBtn.addEventListener('click',  (e) =>{
         e.preventDefault()
         submitBtn.addEventListener('click', addToDo)
@@ -80,19 +68,101 @@ function events(e){
 }
 
 function addToDo(){
-    const Today = document.querySelector('.Today')
-    const Week = document.querySelector('.Week')
-    const Project = document.querySelector('.Projects')
     const ToDoVal = document.querySelector('.TODOinput')
     const ToDoDescVal = document.querySelector('.TODODesc')
     const dateVal = document.querySelector('.dateInput')
     const priorityVal = document.querySelector('.priInput')
-    const task = ToDo(ToDoVal.value, ToDoDescVal.value,dateVal.value, priorityVal.value, `Not Done`)
+    const task = ToDo(ToDoVal.value, ToDoDescVal.value,dateVal.value, priorityVal.value, false)
      tasks.push(task)
     console.log(tasks)
-    setStorage()
     displayToDo(task)
     return task
+}
+
+function weekHandler(){
+    listOfToDos.replaceChildren();
+    Week.removeEventListener('click', weekHandler)
+    Today.addEventListener('click', ()=>{
+        listOfToDos.replaceChildren();
+        const TODAYDIV = createElement('div', {class:'ToDoTasks', id:'todayDiv'})
+        listOfToDos.appendChild(TODAYDIV)
+        TODAYDIV.appendChild(card)
+    })
+    Projects.addEventListener('click', ()=>{
+        listOfToDos.replaceChildren();
+        //Projects.removeEventListener('click', projectHandler)
+        const PROJECTSDIV = createElement('div', {class:'ToDoTasks', id:'projectsDiv'})
+        listOfToDos.appendChild(PROJECTSDIV)
+        listOfToDos.appendChild(PROJECTSDIV)
+        PROJECTSDIV.appendChild(card2)
+        PROJECTSDIV.appendChild(card2)
+    })
+    const WEEKDIV =  createElement('div', {class:'ToDoTasks', id:'weekDiv'})
+    listOfToDos.appendChild(WEEKDIV)
+    WEEKDIV.appendChild(card1)
+    for(const task of tasks){
+        if(task.type === 'week'){
+            displayToDo(task)
+          
+        }
+    }
+    
+}
+function todayHandler(){
+    listOfToDos.replaceChildren();
+    Today.removeEventListener('click', todayHandler)
+    Projects.addEventListener('click', ()=>{
+        listOfToDos.replaceChildren();
+        const PROJECTSDIV = createElement('div', {class:'ToDoTasks', id:'projectsDiv'})
+        listOfToDos.appendChild(PROJECTSDIV)
+        listOfToDos.appendChild(PROJECTSDIV)
+        PROJECTSDIV.appendChild(card2)
+        PROJECTSDIV.appendChild(card2)
+    })
+    Week.addEventListener('click', ()=>{
+        listOfToDos.replaceChildren();
+        const WEEKDIV =  createElement('div', {class:'ToDoTasks', id:'weekDiv'})
+        listOfToDos.appendChild(WEEKDIV)
+        WEEKDIV.appendChild(card1)
+    })
+    const TODAYDIV = createElement('div', {class:'ToDoTasks', id:'todayDiv'})
+    listOfToDos.appendChild(TODAYDIV)
+    TODAYDIV.appendChild(card)
+    for(const task of tasks){
+        if(task.type === 'today'){
+            displayToDo(task)
+        }
+    }
+}
+function projectHandler(){
+    listOfToDos.replaceChildren();
+    Projects.removeEventListener('click', projectHandler)
+    Today.addEventListener('click', ()=>{
+        listOfToDos.replaceChildren();
+        const TODAYDIV = createElement('div', {class:'ToDoTasks', id:'todayDiv'})
+        listOfToDos.appendChild(TODAYDIV)
+        TODAYDIV.appendChild(card)
+    })
+    Week.addEventListener('click', ()=>{
+        listOfToDos.replaceChildren();
+        const WEEKDIV =  createElement('div', {class:'ToDoTasks', id:'weekDiv'})
+        listOfToDos.appendChild(WEEKDIV)
+        WEEKDIV.appendChild(card1)
+    })
+    const PROJECTSDIV = createElement('div', {class:'ToDoTasks', id:'projectsDiv'})
+    listOfToDos.appendChild(PROJECTSDIV)
+    listOfToDos.appendChild(PROJECTSDIV)
+    PROJECTSDIV.appendChild(card2)
+    PROJECTSDIV.appendChild(card2)
+    for(const task of tasks){
+    if(task.type === 'projects'){
+        displayToDo(task)
+        
+            //displayToDo(task)
+                
+        }
+    }
+    
 }
 
 
@@ -121,7 +191,6 @@ function displayToDo(currentTask){
         const EDITimg  = createElement('img', {class:'edit', id:'Icon', src:`${edit.src}`})
         const RADIO = createElement('input', {type:`checkbox`, class:`taskComplete`})
         const EDITDiv  = createElement('div', {class:'edit1', id:'editDiv', src:`${edit.src}`})
-       
         for(const task of tasks){
             //div for TASKSCARDDIV
             //NOTES IS GONNA HAVE DIFFERENT FUNCTIONALITY DIFFERENT FROM TODODIVS
@@ -130,11 +199,15 @@ function displayToDo(currentTask){
             taskCards.push(taskDiv)
             taskDiv.appendChild(RADIO)
             taskDiv.appendChild(TASKPCON)
+            taskDiv.removeChild(TASKPCON)
+            taskDiv.appendChild(TASKPCON)
             taskDiv.appendChild(TASKDCON)
             taskDiv.appendChild(TASKDATECON)
             taskDiv.appendChild(TASKPRIORITYCON)
             taskDiv.appendChild(TRASHCON)
             taskDiv.appendChild(EDITCON)
+            currentTask.type = `today`
+            setStorage()
         } else if(listOfToDos.firstChild.id ===  `weekDiv`){
             card1.appendChild(taskDiv)
             taskCards.push(taskDiv)
@@ -145,6 +218,8 @@ function displayToDo(currentTask){
             taskDiv.appendChild(TASKPRIORITYCON)
             taskDiv.appendChild(TRASHCON)
             taskDiv.appendChild(EDITCON)
+            currentTask.type = `week`
+            setStorage()
         } else if(listOfToDos.firstChild.id === `projectsDiv`){
             card2.appendChild(taskDiv)
             taskCards.push(taskDiv)
@@ -155,7 +230,9 @@ function displayToDo(currentTask){
             taskDiv.appendChild(TASKPRIORITYCON)
             taskDiv.appendChild(TRASHCON)
             taskDiv.appendChild(EDITCON)
-        } else {
+            currentTask.type = `projects`
+            setStorage()
+        } else if(currentTask.type !== `` || currentTask.type === `` || currentTask.type === undefined) {
             card3.appendChild(taskDiv)
             taskCards.push(taskDiv)
             taskDiv.appendChild(RADIO)
@@ -165,8 +242,12 @@ function displayToDo(currentTask){
             taskDiv.appendChild(TASKPRIORITYCON)
             taskDiv.appendChild(TRASHCON)
             taskDiv.appendChild(EDITCON)
+            setStorage()
+            //currentTask.type = `homeOnly`
         }
+        
         editModal()
+        
              const dateP = document.querySelector('.dateP')
              const descP = document.querySelector('.TODODescrip')
             TASKPCON.appendChild(CLONEDTASKP) 
@@ -179,16 +260,19 @@ function displayToDo(currentTask){
             descP.textContent = `${currentTask.description}`
             dateP.textContent = `${currentTask.date}`
             CLONEDTASKPRIORITY.textContent = `${currentTask.priority}`
-            
-        for(let j = 0; j < tasks.length; j++){
-            taskDiv.setAttribute('id', `${j}`)
-            RADIO.setAttribute(`data-task`, `${j}`)
-            TRASHimg.setAttribute('data-trash', `${j}`)
-            CLONEDTASKP.setAttribute(`data-para`, `${j}`)
-            CLONEDTASKPRIORITY.setAttribute(`data-pri`, `${j}`)
-        }
-           
-        
+            taskDiv.setAttribute(`id`, `${currentTask.chore}`)
+            if(currentTask.done === true){
+                CLONEDTASKP.style.textDecoration = `line-through`
+                CLONEDTASKPRIORITY.style.textDecoration = `line-through`
+                RADIO.checked = true
+                CLONEDTASKP.setAttribute(`data-para`, `edit`)
+                CLONEDTASKPRIORITY.setAttribute(`data-pri`, `edit`)
+                RADIO.setAttribute(`data-task`, `edit`)
+            } else if (currentTask.done === false){
+                CLONEDTASKP.style.textDecoration === `none`
+                CLONEDTASKPRIORITY.style.textDecoration === `none`
+                RADIO.checked = false
+            } 
 
     }
     TRASHimg.addEventListener('click', (e)=>{
@@ -198,8 +282,7 @@ function displayToDo(currentTask){
         deleteEle(findTask(tasks, currentTarget.textContent))
     })
     EDITimg.addEventListener('click', openEdit)
-    RADIO.addEventListener('click', taskDone)
-    //setStorage()
+  
 }
 
 events()
@@ -224,27 +307,27 @@ function findTask(tasks, chore){
         }
 }
 
-function taskDone(e){
+function taskDone(test){
+    p = document.querySelector(`[data-para = "${test.chore}"]`)
+    pri = document.querySelector(`[data-pri = "${test.chore}"]`)
     tasks.forEach(function(task){
-        const p = document.querySelector(`[data-para= "${task}"]`)
-        const pri = document.querySelector(`[data-pri= "${task}"]`)
-        const RADIO = document.querySelector(`[data-task= "${task}"]`)
-    
-        if(RADIO !== e.currentTarget){
-            return
-        }
-        if(RADIO.checked === true){
+       
+        if(task.done === true){
                 p.style.textDecoration = 'line-through'
                 pri.style.textDecoration = 'line-through'
                 task.done = true
                 console.log(tasks)
+                localStorage.removeItem(tasks)
+                localStorage.setItem('tasks', JSON.stringify(tasks))
                 localStorage.setItem('done', task.done)
                 return tasks.done
-            } else if(RADIO.checked === false){
+            } else if(task.done === false){
                 p.style.textDecoration = 'none'
                 pri.style.textDecoration = 'none'
                 task.done = false
                 console.log(tasks)
+                localStorage.removeItem(tasks)
+                localStorage.setItem('tasks', JSON.stringify(tasks))
                 localStorage.setItem('done', task.done)
                 return tasks.done
             }
@@ -258,22 +341,8 @@ function setStorage(){
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
-function refreshPage(){
-    if (window.performance){
-        return
-    }
-    if(performance.navigation.type == 1){
-        console.log('hello')
-    } else {
-        return
-    }
-
-}
-refreshPage()
-
 function getStorage(){
     let keys = Object.keys(localStorage);
-    keys.forEach(key =>{
        if(!localStorage.getItem('tasks')){
            return
        }
@@ -285,11 +354,12 @@ function getStorage(){
            console.log(tasks)
            tasks.forEach(task => displayToDo(task))
        }
-    })
 }
 getStorage()
 
-
+function clear(currentTask){
+  delete currentTask.type
+}
 
     
     //today div
@@ -316,4 +386,24 @@ getStorage()
             taskDiv.appendChild(EDITCON)*/
 
 
-
+            /*RADIO.addEventListener('click', (e)=>{
+                tasks.forEach(function(task){
+                    if(RADIO !== e.currentTarget){
+                        return
+                    } else if(RADIO === e.currentTarget && RADIO.Checked === false  ){
+                        CLONEDTASKP.setAttribute(`data-para`, `${currentTask.chore}`)
+                        CLONEDTASKPRIORITY.setAttribute(`data-pri`, `${currentTask.chore}`)
+                        RADIO.setAttribute(`data-task`, `${currentTask.chore}`)
+                         task.done = false
+                         taskDone(currentTask)
+                    } else if(RADIO === e.currentTarget && RADIO.checked === true){
+                        CLONEDTASKP.setAttribute(`data-para`, `${currentTask.chore}`)
+                        CLONEDTASKPRIORITY.setAttribute(`data-pri`, `${currentTask.chore}`)
+                        RADIO.setAttribute(`data-task`, `${currentTask.chore}`)
+                        task.done = true
+                        taskDone(currentTask)
+                        
+                    }
+                    
+                })
+                }) */
