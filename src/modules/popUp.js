@@ -14,11 +14,6 @@ function popUp(){
     span.addEventListener('click', ()=>{
         myModal.style.display = "none"
     })
-    window.onclick = function (e){
-        if (e.target === myModal){
-            myModal.style.display = "none"
-        }
-    }
 }
 
 export default popUp

@@ -134,6 +134,7 @@ function todayHandler(){
         }
     }
 }
+
 function projectHandler(){
     listOfToDos.replaceChildren();
     Projects.removeEventListener('click', projectHandler)
@@ -149,6 +150,7 @@ function projectHandler(){
         listOfToDos.appendChild(WEEKDIV)
         WEEKDIV.appendChild(card1)
     })
+
     const PROJECTSDIV = createElement('div', {class:'ToDoTasks', id:'projectsDiv'})
     listOfToDos.appendChild(PROJECTSDIV)
     listOfToDos.appendChild(PROJECTSDIV)
@@ -265,23 +267,46 @@ function displayToDo(currentTask){
                 CLONEDTASKP.style.textDecoration = `line-through`
                 CLONEDTASKPRIORITY.style.textDecoration = `line-through`
                 RADIO.checked = true
-                CLONEDTASKP.setAttribute(`data-para`, `edit`)
-                CLONEDTASKPRIORITY.setAttribute(`data-pri`, `edit`)
-                RADIO.setAttribute(`data-task`, `edit`)
+                CLONEDTASKP.setAttribute(`data-para`, `done`)
+                CLONEDTASKPRIORITY.setAttribute(`data-pri`, `done`)
+                RADIO.setAttribute(`data-task`, `done`)
             } else if (currentTask.done === false){
-                CLONEDTASKP.style.textDecoration === `none`
-                CLONEDTASKPRIORITY.style.textDecoration === `none`
+                CLONEDTASKP.style.textDecoration = `none`
+                CLONEDTASKPRIORITY.style.textDecoration = `none`
                 RADIO.checked = false
             } 
 
     }
     TRASHimg.addEventListener('click', (e)=>{
         const currentTarget = e.currentTarget.parentNode.parentNode
-        console.log(currentTarget)
+        console.log(currentTarget.textContent)
         currentTarget.remove()
         deleteEle(findTask(tasks, currentTarget.textContent))
     })
     EDITimg.addEventListener('click', openEdit)
+    RADIO.addEventListener('click', (e)=>{
+            const hello = e.currentTarget.nextSibling
+            console.log(hello.textContent)
+        if(RADIO.checked === true && hello.textContent === currentTask.chore){
+            currentTask.done = true
+            CLONEDTASKP.style.textDecoration = `line-through`
+            CLONEDTASKPRIORITY.style.textDecoration = `line-through`
+            console.log(hello.done)
+            console.log(tasks)
+            setStorage()
+        } else {
+            currentTask.done = false
+            CLONEDTASKP.style.textDecoration = `none`
+            CLONEDTASKPRIORITY.style.textDecoration = `none`
+            console.log(hello.done)
+            console.log(tasks)
+            setStorage()
+        }
+          
+            
+           
+        
+    })
   
 }
 
@@ -305,36 +330,6 @@ function findTask(tasks, chore){
             console.log(tasks.indexOf(task))
             return tasks.indexOf(task)
         }
-}
-
-function taskDone(test){
-    p = document.querySelector(`[data-para = "${test.chore}"]`)
-    pri = document.querySelector(`[data-pri = "${test.chore}"]`)
-    tasks.forEach(function(task){
-       
-        if(task.done === true){
-                p.style.textDecoration = 'line-through'
-                pri.style.textDecoration = 'line-through'
-                task.done = true
-                console.log(tasks)
-                localStorage.removeItem(tasks)
-                localStorage.setItem('tasks', JSON.stringify(tasks))
-                localStorage.setItem('done', task.done)
-                return tasks.done
-            } else if(task.done === false){
-                p.style.textDecoration = 'none'
-                pri.style.textDecoration = 'none'
-                task.done = false
-                console.log(tasks)
-                localStorage.removeItem(tasks)
-                localStorage.setItem('tasks', JSON.stringify(tasks))
-                localStorage.setItem('done', task.done)
-                return tasks.done
-            }
-    })
-
-
-
 }
 
 function setStorage(){
